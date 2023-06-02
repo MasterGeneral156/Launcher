@@ -1,13 +1,19 @@
-apply plugin: 'com.github.johnrengelman.shadow'
+plugins {
+    id 'application'
+    id "com.github.johnrengelman.shadow"
+    id 'io.freefair.lombok'
+}
 
 version = "1.0.0"
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+
+application {
+    mainClassName = "com.skcraft.launcher.creator.Creator"
+}
 
 dependencies {
-    compile project(':launcher-builder')
-    compile 'org.eclipse.jetty:jetty-server:9.3.1.v20150714'
-    compile 'com.jidesoft:jide-oss:3.6.10'
+    implementation project(path: ':launcher-builder')
+    implementation 'org.eclipse.jetty:jetty-server:9.3.1.v20150714'
+    implementation 'com.jidesoft:jide-oss:3.6.18'
 }
 
 processResources {
@@ -18,16 +24,10 @@ processResources {
     }
 }
 
-jar {
-    manifest {
-        attributes("Main-Class": "com.skcraft.launcher.creator.Creator")
-    }
-}
-
 shadowJar {
-    dependencies {
-        exclude(dependency('org.projectlombok:lombok'))
-    }
+    archiveClassifier.set("")
 }
 
-build.dependsOn(shadowJar)
+build {
+    dependsOn(shadowJar)
+}

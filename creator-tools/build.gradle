@@ -4,7 +4,7 @@ plugins {
     id 'io.freefair.lombok'
 }
 
-version = "1.1.0"
+version = "2.1.0-SNAPSHOT"
 
 application {
     mainClassName = "com.skcraft.launcher.creator.Creator"

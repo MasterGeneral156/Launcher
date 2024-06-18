@@ -12,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.util.Base64;
 import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -66,7 +67,14 @@ public class OauthHttpHandler {
 			} else {
 				response = "Unable to fetch resource login.html".getBytes(Charsets.UTF_8);
 			}
-
+			InputStream iconStream = Launcher.class.getResourceAsStream("icon.png");
+			if (iconStream != null) {
+				byte[] iconBytes = IOUtils.toByteArray(iconStream);
+				String encodedIcon = Base64.getEncoder().encodeToString(iconBytes);
+				response = String.format(new String(response), encodedIcon).getBytes();
+			} else {
+				log.warning("Unable to fetch resource icon.png");
+			}
 			httpExchange.sendResponseHeaders(200, response.length);
 			httpExchange.getResponseBody().write(response);
 			httpExchange.getResponseBody().flush();

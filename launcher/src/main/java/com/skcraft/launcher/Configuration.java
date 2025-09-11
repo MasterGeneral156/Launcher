@@ -26,11 +26,11 @@ public class Configuration {
     private boolean offlineEnabled = false;
     private JavaRuntime javaRuntime;
     private String jvmArgs;
-    private int minMemory = 1024;
-    private int maxMemory = 0; // Updated in Launcher
-    private int permGen = 256;
-    private int windowWidth = 854;
-    private int windowHeight = 480;
+    private int minMemory = 4096;
+    private int maxMemory = 8192; // Updated in Launcher
+    private int permGen = 0;
+    private int windowWidth = 1280;
+    private int windowHeight = 800;
     private boolean proxyEnabled = false;
     private String proxyHost = "localhost";
     private int proxyPort = 8080;

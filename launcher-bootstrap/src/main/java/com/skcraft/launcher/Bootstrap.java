@@ -197,7 +197,7 @@ public class Bootstrap {
         }
 
         File dotFolder = new File(System.getProperty("user.home"), getProperties().getProperty("homeFolder"));
-        String xdgFolderName = getProperties().getProperty("homeFolderLinux");
+        /*String xdgFolderName = getProperties().getProperty("homeFolderLinux");
 
 		if (osName.contains("linux") && !dotFolder.exists() && xdgFolderName != null && !xdgFolderName.isEmpty()) {
             String xdgDataHome = System.getenv("XDG_DATA_HOME");
@@ -206,7 +206,7 @@ public class Bootstrap {
             }
 
             return new File(xdgDataHome, xdgFolderName);
-        }
+        }*/
 
         return dotFolder;
     }
